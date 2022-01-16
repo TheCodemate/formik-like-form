@@ -16,7 +16,7 @@ export const FormikLikeForm = ({
   initialValues,
   onSubmit,
   validationSchema
-}: Props) => {
+}: FormikLikeFormProps) => {
   const [formState, setFormState] = useState<IFormState>({
     values: { ...initialValues },
     touched: {},
@@ -69,7 +69,7 @@ export const FormikLikeForm = ({
   );
 };
 
-interface Props {
+interface FormikLikeFormProps {
   initialValues: DynamicObjectType;
   validationSchema: ValidationSchemaType;
   children: (isSubmitting: boolean) => JSX.Element;

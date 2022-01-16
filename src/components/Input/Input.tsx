@@ -3,7 +3,7 @@ import { useContext } from 'react';
 
 import { setFirstCapitalLetter } from 'utils';
 
-export const Input = ({ name, placeholder }: Props) => {
+export const Input = ({ name, placeholder }: InputProps) => {
   const {
     formState: { errors },
     handleChange,
@@ -27,7 +27,7 @@ export const Input = ({ name, placeholder }: Props) => {
   );
 };
 
-interface Props {
+interface InputProps {
   name: string;
   placeholder?: string;
 }

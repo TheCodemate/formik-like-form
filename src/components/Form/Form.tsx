@@ -1,7 +1,7 @@
 import { ReactNode, useContext } from 'react';
 import { FormikLikeContext } from 'components/FormikLikeForm/FormikLikeForm';
 
-export const Form = ({ children }: Props) => {
+export const Form = ({ children }: FormProps) => {
   const { onSubmit, formState } = useContext(FormikLikeContext);
   return (
     <>
@@ -16,6 +16,6 @@ export const Form = ({ children }: Props) => {
   );
 };
 
-interface Props {
+interface FormProps {
   children: ReactNode | ReactNode[];
 }
