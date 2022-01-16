@@ -1,12 +1,5 @@
-import {
-  ChangeEvent,
-  createContext,
-  FocusEvent,
-  useState,
-  SyntheticEvent
-} from 'react';
+import { ChangeEvent, createContext, FocusEvent, useState } from 'react';
 
-//Types
 import {
   DynamicObjectType,
   IFormikLikeContextConfig,
@@ -14,12 +7,10 @@ import {
   ValidationSchemaType
 } from 'types';
 
-//Context
 export const FormikLikeContext = createContext<IFormikLikeContextConfig>(
   {} as IFormikLikeContextConfig
 );
 
-//Main component
 export const FormikLikeForm = ({
   children,
   initialValues,
@@ -78,10 +69,9 @@ export const FormikLikeForm = ({
   );
 };
 
-//Interfaces & types
 interface Props {
   initialValues: DynamicObjectType;
   validationSchema: ValidationSchemaType;
   children: (isSubmitting: boolean) => JSX.Element;
-  onSubmit: (e: SyntheticEvent<HTMLInputElement>) => void;
+  onSubmit: (values: DynamicObjectType) => void;
 }

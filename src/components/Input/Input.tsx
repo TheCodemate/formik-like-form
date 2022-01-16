@@ -1,10 +1,7 @@
 import { FormikLikeContext } from 'components/FormikLikeForm/FormikLikeForm';
 import { useContext } from 'react';
 
-//Utils
 import { setFirstCapitalLetter } from 'utils';
-
-import * as S from './Input.styled';
 
 export const Input = ({ name, placeholder }: Props) => {
   const {
@@ -16,8 +13,8 @@ export const Input = ({ name, placeholder }: Props) => {
 
   return (
     <>
-      <S.Label>{capitalLetterName}</S.Label>
-      <S.Input
+      <label>{capitalLetterName}</label>
+      <input
         onChange={e => {
           handleChange(e);
         }}
@@ -25,7 +22,7 @@ export const Input = ({ name, placeholder }: Props) => {
         name={name}
         placeholder={placeholder || ''}
       />
-      <S.ErrorDisplay>{errors[name]}</S.ErrorDisplay>
+      <span>{errors[name]}</span>
     </>
   );
 };
