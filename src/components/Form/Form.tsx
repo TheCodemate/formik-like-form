@@ -1,19 +1,17 @@
 import { ReactNode, useContext } from 'react';
 import { FormikLikeContext } from 'components/FormikLikeForm/FormikLikeForm';
 
-import * as S from './Form.styled';
-
 export const Form = ({ children }: Props) => {
   const { onSubmit, formState } = useContext(FormikLikeContext);
   return (
     <>
-      <S.Form
-        onSubmit={e => {
+      <form
+        onSubmit={() => {
           onSubmit(formState.values);
         }}
       >
         {children}
-      </S.Form>
+      </form>
     </>
   );
 };

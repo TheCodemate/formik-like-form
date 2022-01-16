@@ -1,7 +1,7 @@
 import {
   ChangeEvent,
-  FocusEvent,
   createContext,
+  FocusEvent,
   useState,
   SyntheticEvent
 } from 'react';
@@ -10,8 +10,9 @@ import {
 import {
   DynamicObjectType,
   IFormikLikeContextConfig,
-  IFormState
-} from 'index.d';
+  IFormState,
+  ValidationSchemaType
+} from 'types';
 
 //Context
 export const FormikLikeContext = createContext<IFormikLikeContextConfig>(
@@ -21,8 +22,8 @@ export const FormikLikeContext = createContext<IFormikLikeContextConfig>(
 //Main component
 export const FormikLikeForm = ({
   children,
-  onSubmit,
   initialValues,
+  onSubmit,
   validationSchema
 }: Props) => {
   const [formState, setFormState] = useState<IFormState>({
@@ -64,12 +65,12 @@ export const FormikLikeForm = ({
   return (
     <FormikLikeContext.Provider
       value={{
-        setIsSubmitting,
-        isSubmitting,
         formState,
         handleChange,
         handleBlur,
-        onSubmit
+        isSubmitting,
+        onSubmit,
+        setIsSubmitting
       }}
     >
       {children(isSubmitting)}
@@ -79,11 +80,8 @@ export const FormikLikeForm = ({
 
 //Interfaces & types
 interface Props {
+  initialValues: DynamicObjectType;
+  validationSchema: ValidationSchemaType;
   children: (isSubmitting: boolean) => JSX.Element;
   onSubmit: (e: SyntheticEvent<HTMLInputElement>) => void;
-  initialValues: DynamicObjectType;
-  validationSchema: {
-    email: (value: any) => { error: boolean; errorMsg: string };
-    password: (value: any) => { error: boolean; errorMsg: string };
-  };
 }

@@ -1,11 +1,13 @@
 //components
 import { Form, FormikLikeForm, Input } from 'components';
+import { ValidationSchemaType } from 'types';
 
 //utils
 import { Validator } from 'utils';
 
+//consts
 const validate = new Validator();
-const validationSchema = {
+const validationSchema: ValidationSchemaType = {
   email: (value: any) => validate.toCheck(value).isEmail().build(),
   password: (value: any) => validate.toCheck(value).isPassword().build()
 };

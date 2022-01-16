@@ -1,8 +1,7 @@
-// export interface IDynamicObject {
-// [key: string]: any;
-// }
+import { ChangeEvent, FocusEvent, SetStateAction, SyntheticEvent } from 'react';
+import { Dispatch } from 'react';
 
-export type IDynamicObject = Record<string, string>;
+// export type IDynamicObject = Record<string, string>;
 
 export type DynamicObjectType = Record<string, any>;
 
@@ -18,7 +17,7 @@ export interface IFormikLikeContextConfig {
   formState: IFormState;
   handleChange: (e: ChangeEvent<HTMLInputElement>) => void;
   handleBlur: (e: FocusEvent<HTMLInputElement>) => void;
-  onSubmit: (e: SyntheticEvent<HTMLInputElement>) => void;
+  onSubmit: (values: DynamicObjectType) => void;
 }
 
 export type ValidateType = (
@@ -26,3 +25,8 @@ export type ValidateType = (
   values: DynamicObjectType,
   setErrors: (valueName: string, errorMessage: string) => void
 ) => void;
+
+export type ValidationSchemaType = Record<
+  string,
+  (value: any) => { error: boolean; errorMsg: string }
+>;
